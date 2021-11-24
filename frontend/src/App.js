@@ -1,8 +1,10 @@
+import Header from './components/Header'
+import Footer from './components/Footer'
 
 function App() {
   return (
-    <div className="App">
-      
+    <div>
+      <h1>Working on proccess..</h1>
     </div>
   );
 }
