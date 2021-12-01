@@ -67,7 +67,7 @@ li{
 }
 
 .side-menu .top-section .toggle-button{
-    color: rgb(0, 62, 90);
+    
     font-size: 20px;
     position: absolute;
     top: 50%;
@@ -84,5 +84,153 @@ li{
     width: 100%;
     height: 1px;
     border-radius: 1px;
+    background: #9b9b9b;
+    margin-top: 30px;
+}
+
+.side-menu .main-menu .menu-item{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 15px;
+    display: block;
+    font-weight: 600;
+    cursor: pointer;
+    padding-top: 20px;
+}
+
+
+.side-menu .main-menu .menu-item.active{
+    background: #333;
+    border-radius: 5px;
+    color: #fff;
+}
+
+
+.side-menu .main-menu{
+    margin: 5px 0;
+    position: relative;
+    
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+
+.side-menu .main-menu .menu-item .menu-icon{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    line-height: 40px;
+    text-align: center;
+}
+
+.side-menu .main-menu .menu-item span{
+    position: absolute;
+    display: inline-block;
+    line-height: 40px;
+    opacity: 1;
+    transition: opacity .2s ease-in;
+}
+
+.side-menu.inactive .main-menu .menu-item span{
+    opacity: 0;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.side-menu .main-menu .sub-menu{
+    color: rgb(255, 255, 255);
+    margin-left: 20px;
+    border-left: 1px solid rgb(255, 255, 255);
+    box-sizing: border-box;
+    padding-left: 30px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .2s ease-in;
+}
+
+
+
+.side-menu .main-menu .sub-menu.active{
+    max-height: 200px;
+}
+
+.side-menu .main-menu .sub-menu a{
+    display: block;
+    cursor: pointer;
+    margin: 5px 0;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    color: rgb(244, 255, 202);
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+
+.side-menu .main-menu .sub-menu a.active{
+    /* change in background, not recorded in video */
     background: rgb(255, 255, 255);
+    display: block;
+    
+    border-radius: 5px;
+    color: #fff;
+
+}
+
+.side-menu-footer{
+    width: 100%;
+    background: #2E8B57;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 20px;
+    box-sizing: border-box;
+
+}
+
+
+
+.side-menu-footer.inactive{
+    width: 80px;
+}
+
+
+
+
+
+
+
+.side-menu-footer .footer-item{
+    color: rgb(255, 255, 255);
+    display: inline-block;
+    text-decoration: none;
+    font-size: 15px;
+    display: block;
+    font-weight: 600;
+    cursor: pointer;
+    padding-top: 20px;
+}
+
+
+
+
+
+
+.side-menu-footer .footer-item span{
+    position: absolute;
+    display: inline-block;
+    line-height: 40px;
+    opacity: 1;
+    transition: opacity .2s ease-in;
+    margin-top: -10px;
+    padding-left: 15px;
+}
+
+.side-menu-footer.inactive .footer-item span{
+    opacity: 0;
+    width: 0;
+    height: 0;
+    overflow: hidden;
 }
