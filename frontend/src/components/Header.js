@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import logo from '../assets/logo/Logo.png';
 import MenuItem from './MenuItem';
 
@@ -6,14 +6,17 @@ const menuItems = [
     {
         name: "Home",
         to: "/",
+        iconClassName: "bi bi-house-fill",
     },
     {
         name: "Manage Booking",
         to: "/bookingrequest",
+        iconClassName: "bi bi-window",
     },
     {
         name: "Coordination",
         to: "",
+        iconClassName: "bi bi-window-plus",
         subMenus: [
             { name: "Vehicles", to: "/vehicles" },
             { name: "Booking History", to: "/aftercompleted" },
@@ -24,6 +27,7 @@ const menuItems = [
     {
         name: "User's",
         to: "",
+        iconClassName: "bi bi-window-plus",
         subMenus: [
             { name: "Customer's", to: "/customeruser" },
             { name: "Driver's", to: "/driver" },
@@ -33,6 +37,7 @@ const menuItems = [
     {
         name: "Edit Contact",
         to: "/editcontact",
+        iconClassName: "bi bi-window",
     },
 
 
@@ -41,6 +46,14 @@ const menuItems = [
 
 const Header = (props) => {
     const [inactive, SetInactive] = useState(false);
+
+    useEffect(() => {
+        if(inactive){
+            document.querySelectorAll('.sub-menu').forEach(e => {
+                e.classList.remove("active");
+            });
+        }
+    }, [inactive])
 
     return (
         <div className={`side-menu ${inactive ? "inactive" : ""}`}>
@@ -66,7 +79,12 @@ const Header = (props) => {
                                 to={menuItem.to}
                                 name={menuItem.name}
                                 subMenus={menuItem.subMenus || []}
-
+                                iconClassName={menuItem.iconClassName}
+                                onClick={()=>{
+                                    if(inactive){
+                                        SetInactive(false);
+                                    }
+                                }}
                             />
                         ))
                     }
