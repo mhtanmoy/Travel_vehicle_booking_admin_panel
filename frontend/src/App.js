@@ -14,11 +14,11 @@ function App() {
       <Router>
         <Header />
 
-        {/* <Switch>
+        <Switch>
           <Route>
 
           </Route>
-        </Switch> */}
+        </Switch>
 
         <main className="py-3">
           <Container>
