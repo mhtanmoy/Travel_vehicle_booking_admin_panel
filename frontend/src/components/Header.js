@@ -23,7 +23,7 @@ const menuItems = [
             { name: "Vehicles", to: "/vehicles" },
             { name: "Booking History", to: "/aftercompleted" },
             { name: "Driver's Account Verification", to: "/driversverify" },
-            { name: "All Time Bookings", to: "/bookinghistory" },
+            
         ],
     },
     {
