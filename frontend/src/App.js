@@ -1,4 +1,5 @@
 import './App.css'
+import React, { useState } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -6,24 +7,24 @@ import {
 } from "react-router-dom";
 import Header from './components/Header'
 import Footer from './components/Footer'
-import { Container } from 'react-bootstrap'
+import HomeScreen from './screen/HomeScreen'
+
 
 function App() {
+  const [inactive, SetInactive] = useState(false);
+
   return (
     <div>
       <Router>
-        <Header />
-
-        <Switch>
-          <Route>
-
-          </Route>
-        </Switch>
-
+        <Header onCollapse={(inactive)=>{
+          SetInactive(inactive);
+        }}/>
         <main className="py-3">
-          <Container>
-            <h1>Working on proccess..</h1>
-          </Container>
+          <div className={`homeSwitch ${inactive ? "inactive" : ""}`}>
+            <Switch>
+              <Route path={'/'} component={HomeScreen} exact/>
+            </Switch>
+          </div>
         </main>
         <Footer />
       </Router>

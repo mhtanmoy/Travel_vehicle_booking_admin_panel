@@ -6,6 +6,7 @@ const menuItems = [
     {
         name: "Home",
         to: "/",
+        
         iconClassName: "bi bi-house-fill",
     },
     {
@@ -15,7 +16,8 @@ const menuItems = [
     },
     {
         name: "Coordination",
-        to: "",
+        to: "#",
+        
         iconClassName: "bi bi-window-plus",
         subMenus: [
             { name: "Vehicles", to: "/vehicles" },
@@ -26,7 +28,8 @@ const menuItems = [
     },
     {
         name: "User's",
-        to: "",
+        to: "#",
+        
         iconClassName: "bi bi-window-plus",
         subMenus: [
             { name: "Customer's", to: "/customeruser" },
@@ -53,6 +56,7 @@ const Header = (props) => {
                 e.classList.remove("active");
             });
         }
+        props.onCollapse(inactive);
     }, [inactive])
 
     return (
@@ -78,6 +82,7 @@ const Header = (props) => {
                                 key={index}
                                 to={menuItem.to}
                                 name={menuItem.name}
+                                
                                 subMenus={menuItem.subMenus || []}
                                 iconClassName={menuItem.iconClassName}
                                 onClick={()=>{
