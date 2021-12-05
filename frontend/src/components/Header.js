@@ -10,6 +10,11 @@ const menuItems = [
         iconClassName: "bi bi-house-fill",
     },
     {
+        name: "Booking",
+        to: "/booking",
+        iconClassName: "bi bi-window",
+    },
+    {
         name: "Manage Booking",
         to: "/bookingrequest",
         iconClassName: "bi bi-window",

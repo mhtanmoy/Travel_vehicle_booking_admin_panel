@@ -16,6 +16,7 @@ import DriverScreen from './screen/DriverScreen'
 import EditContactScreen from './screen/EditContactScreen'
 import ManageBookingScreen from './screen/ManageBookingScreen'
 import VehiclesScreen from './screen/VehiclesScreen'
+import BookingScreen from './screen/BookingScreen'
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
               <Route path={'/editcontact'} component={EditContactScreen}/>
               <Route path={'/bookingrequest'} component={ManageBookingScreen}/>
               <Route path={'/vehicles'} component={VehiclesScreen}/>
+              <Route path={'/booking'} component={BookingScreen}/>
             </Switch>
           </div>
         </main>
