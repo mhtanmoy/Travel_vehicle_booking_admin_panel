@@ -18,6 +18,7 @@ import ManageBookingScreen from './screen/ManageBookingScreen'
 import VehiclesScreen from './screen/VehiclesScreen'
 import BookingScreen from './screen/BookingScreen'
 import LoginScreen from './screen/LoginScreen'
+import RegisterScreen from './screen/RegisterScreen'
 
 function App() {
   const [inactive, SetInactive] = useState(false);
@@ -34,6 +35,7 @@ function App() {
               <Route path={'/'} component={HomeScreen} exact/>
               <Route path={'/users'} component={AdminScreen}/>
               <Route path='/login' component={LoginScreen} />
+              <Route path='/register' component={RegisterScreen} />
               <Route path={'/aftercompleted'} component={BookingHistoryScreen}/>
               <Route path={'/customeruser'} component={CustomerScreen}/>
               <Route path={'/driversverify'} component={DriAccVerScreen}/>

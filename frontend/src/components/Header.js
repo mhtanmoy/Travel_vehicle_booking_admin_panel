@@ -1,6 +1,9 @@
 import React, {useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
 import logo from '../assets/logo/Logo.png';
 import MenuItem from './MenuItem';
+import { logout } from '../actions/userActions'
+import { useHistory } from 'react-router-dom'
 
 const menuItems = [
     {
@@ -53,6 +56,22 @@ const menuItems = [
 
 
 const Header = (props) => {
+
+    let history = useHistory()
+
+    const loginHandler = () => {
+        history.push('/login')
+    }
+
+
+    const userLogin = useSelector(state => state.userLogin)
+    const {userInfo} = userLogin
+    const dispatch = useDispatch()
+    const logoutHandler = () =>{
+      dispatch(logout())
+    }
+
+
     const [inactive, SetInactive] = useState(false);
 
     useEffect(() => {
@@ -105,15 +124,28 @@ const Header = (props) => {
                 </ul>
 
             </div>
-            <div className={`side-menu-footer ${inactive ? "inactive" : ""}`}>
+            {userInfo ? (
+                <div className={`side-menu-footer ${inactive ? "inactive" : ""}`}>
                 <a className="footer-item">
-                    <div className="footer-icon">
+                    <div className="footer-icon" onClick={logoutHandler}>
                         <i class="bi bi-door-closed-fill"></i>
                         <span>Logout</span>
                     </div>
 
                 </a>
             </div>
+            ) : (
+                <div className={`side-menu-footer ${inactive ? "inactive" : ""}`}>
+                <a className="footer-item">
+                    <div className="footer-icon" onClick={loginHandler}>
+                        <i class="bi bi-door-closed-fill"></i>
+                        <span>Login</span>
+                    </div>
+
+                </a>
+            </div>
+            )}
+            
 
         </div>)
 
