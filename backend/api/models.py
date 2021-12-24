@@ -7,7 +7,6 @@ from django.utils.timezone import now
 
 
 class Driver(models.Model):
-    driveruser = models.ForeignKey(User, related_name='driver', on_delete=models.CASCADE)
     driver_id = models.AutoField(primary_key=True)
     driver_name=models.CharField(max_length=150)
     mobile_no=models.CharField(max_length=20)
@@ -26,7 +25,7 @@ class Driver(models.Model):
 
 class CustomerUser(models.Model):
     customer_id = models.AutoField(primary_key=True)
-    customeruser = models.ForeignKey(User, related_name='customer', on_delete=models.CASCADE)
+    
     user_name = models.CharField(max_length=150)
     mobile_no = models.CharField(max_length=25)
     wallet_amount = models.CharField(max_length=10, null=True)
