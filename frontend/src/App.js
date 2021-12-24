@@ -17,7 +17,7 @@ import EditContactScreen from './screen/EditContactScreen'
 import ManageBookingScreen from './screen/ManageBookingScreen'
 import VehiclesScreen from './screen/VehiclesScreen'
 import BookingScreen from './screen/BookingScreen'
-
+import LoginScreen from './screen/LoginScreen'
 
 function App() {
   const [inactive, SetInactive] = useState(false);
@@ -33,6 +33,7 @@ function App() {
             <Switch>
               <Route path={'/'} component={HomeScreen} exact/>
               <Route path={'/users'} component={AdminScreen}/>
+              <Route path='/login' component={LoginScreen} />
               <Route path={'/aftercompleted'} component={BookingHistoryScreen}/>
               <Route path={'/customeruser'} component={CustomerScreen}/>
               <Route path={'/driversverify'} component={DriAccVerScreen}/>
