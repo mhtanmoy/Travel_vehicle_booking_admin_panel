@@ -1,15 +1,16 @@
-import React, {useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import logo from '../assets/logo/Logo.png';
-import MenuItem from './MenuItem';
+import logo from '../assets/logo/Logo.png'
+import MenuItem from './MenuItem'
 import { logout } from '../actions/userActions'
 import { useHistory } from 'react-router-dom'
+import { NavLink } from "react-router-dom"
 
 const menuItems = [
     {
         name: "Home",
         to: "/",
-        
+
         iconClassName: "bi bi-house-fill",
     },
     {
@@ -25,19 +26,19 @@ const menuItems = [
     {
         name: "Coordination",
         to: "#",
-        
+
         iconClassName: "bi bi-window-plus",
         subMenus: [
             { name: "Vehicles", to: "/vehicles" },
             { name: "Booking History", to: "/aftercompleted" },
             { name: "Driver's Account Verification", to: "/driversverify" },
-            
+
         ],
     },
     {
         name: "User's",
         to: "#",
-        
+
         iconClassName: "bi bi-window-plus",
         subMenus: [
             { name: "Customer's", to: "/customeruser" },
@@ -65,17 +66,17 @@ const Header = (props) => {
 
 
     const userLogin = useSelector(state => state.userLogin)
-    const {userInfo} = userLogin
+    const { userInfo } = userLogin
     const dispatch = useDispatch()
-    const logoutHandler = () =>{
-      dispatch(logout())
+    const logoutHandler = () => {
+        dispatch(logout())
     }
 
 
     const [inactive, SetInactive] = useState(false);
 
     useEffect(() => {
-        if(inactive){
+        if (inactive) {
             document.querySelectorAll('.sub-menu').forEach(e => {
                 e.classList.remove("active");
             });
@@ -99,53 +100,69 @@ const Header = (props) => {
             <div className="divider"></div>
 
             <div className="main-menu">
-                <ul>
-                    {
-                        menuItems.map((menuItem, index) => (
-                            <MenuItem
-                                key={index}
-                                to={menuItem.to}
-                                name={menuItem.name}
-                                
-                                subMenus={menuItem.subMenus || []}
-                                iconClassName={menuItem.iconClassName}
-                                onClick={()=>{
-                                    if(inactive){
-                                        SetInactive(false);
-                                    }
-                                }}
-                            />
-                        ))
-                    }
+                {userInfo ? (
+                    <ul>
+                        {
+                            menuItems.map((menuItem, index) => (
+                                <MenuItem
+                                    key={index}
+                                    to={menuItem.to}
+                                    name={menuItem.name}
+
+                                    subMenus={menuItem.subMenus || []}
+                                    iconClassName={menuItem.iconClassName}
+                                    onClick={() => {
+                                        if (inactive) {
+                                            SetInactive(false);
+                                        }
+                                    }}
+                                />
+                            ))
+                        }
 
 
 
 
-                </ul>
+                    </ul>
+                ) : (
+                    <ul>
+                        <li>
+                            <NavLink
+                                to="/register"
+                                className="menu-item">
+                                <div className="menu-icon">
+                                    <i class="bi bi-door-closed-fill"></i>
+                                </div>
+                                <span>Register</span>
+                            </NavLink>
+                        </li>
+                    </ul>
+                )}
+
 
             </div>
             {userInfo ? (
                 <div className={`side-menu-footer ${inactive ? "inactive" : ""}`}>
-                <a className="footer-item">
-                    <div className="footer-icon" onClick={logoutHandler}>
-                        <i class="bi bi-door-closed-fill"></i>
-                        <span>Logout</span>
-                    </div>
+                    <a className="footer-item">
+                        <div className="footer-icon" onClick={logoutHandler}>
+                            <i class="bi bi-door-closed-fill"></i>
+                            <span>Logout</span>
+                        </div>
 
-                </a>
-            </div>
+                    </a>
+                </div>
             ) : (
                 <div className={`side-menu-footer ${inactive ? "inactive" : ""}`}>
-                <a className="footer-item">
-                    <div className="footer-icon" onClick={loginHandler}>
-                        <i class="bi bi-door-closed-fill"></i>
-                        <span>Login</span>
-                    </div>
+                    <a className="footer-item">
+                        <div className="footer-icon" onClick={loginHandler}>
+                            <i class="bi bi-door-closed-fill"></i>
+                            <span>Login</span>
+                        </div>
 
-                </a>
-            </div>
+                    </a>
+                </div>
             )}
-            
+
 
         </div>)
 

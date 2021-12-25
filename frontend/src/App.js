@@ -33,9 +33,10 @@ function App() {
           <div className={`homeSwitch ${inactive ? "inactive" : ""}`}>
             <Switch>
               <Route path={'/'} component={HomeScreen} exact/>
-              <Route path={'/users'} component={AdminScreen}/>
+              
               <Route path='/login' component={LoginScreen} />
               <Route path='/register' component={RegisterScreen} />
+              <Route path={'/users'} component={AdminScreen}/>
               <Route path={'/aftercompleted'} component={BookingHistoryScreen}/>
               <Route path={'/customeruser'} component={CustomerScreen}/>
               <Route path={'/driversverify'} component={DriAccVerScreen}/>
